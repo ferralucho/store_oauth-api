@@ -1,6 +1,8 @@
 package access_token
 
 import (
+	"strings"
+
 	"github.com/mercadolibre/store_oauth-api/src/utils/errors"
 )
 
@@ -23,6 +25,10 @@ func NewService(repo Repository) Service {
 }
 
 func (s *service) GetByID(accessTokenID string) (*AccessToken, *errors.RestErr) {
+	accessTokenID = strings.TrimSpace(accessTokenID)
+	if len(accessTokenID) == 0 {
+		return nil, errors.NewBadRequestError("invalid access token id")
+	}
 	accessToken, err := s.repository.GetByID(accessTokenID)
 
 	if err != nil {
