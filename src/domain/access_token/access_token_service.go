@@ -42,10 +42,16 @@ func (s *service) GetByID(accessTokenID string) (*AccessToken, *errors.RestErr) 
 	return accessToken, nil
 }
 
-func (s *service) Create(AccessToken) *errors.RestErr {
-	return nil
+func (s *service) Create(at AccessToken) *errors.RestErr {
+	if err := at.Validate(); err != nil {
+		return err
+	}
+	return s.repository.Create(at)
 }
 
-func (s *service) UpdateExpirationTime(AccessToken) *errors.RestErr {
-	return nil
+func (s *service) UpdateExpirationTime(at AccessToken) *errors.RestErr {
+	if err := at.Validate(); err != nil {
+		return err
+	}
+	return s.repository.UpdateExpirationTime(at)
 }

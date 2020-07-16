@@ -1,8 +1,17 @@
 # store_oauth-api
 oauth api for store in golang
 
-curl --location --request GET 'localhost:8082/oauth/access_token/123' \
+curl --location --request GET 'localhost:8083/oauth/access_token/123' \
 --data-raw ''
+
+curl --location --request POST 'localhost:8083/oauth/access_token' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "access_token": "abc123",
+    "user": 1,
+    "client_id": 2,
+    "expires": 3
+}'
 
 install cassandra. https://cassandra.apache.org/doc/latest/getting_started/index.html 
 https://cassandra.apache.org/

@@ -13,7 +13,7 @@ const (
 	queryUpdateExpires     = "UPDATE access_tokens SET expires=? WHERE access_token=?;"
 )
 
-func NewRepository() DbRepository {
+func NewRepository() access_token.Repository {
 	return &dbRepository{}
 }
 
