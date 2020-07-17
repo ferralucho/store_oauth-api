@@ -20,12 +20,8 @@ func NewRepository() access_token.Repository {
 type dbRepository struct{}
 
 func (r *dbRepository) GetByID(id string) (*access_token.AccessToken, *errors.RestErr) {
-	session := cassandra.GetSession()
-
-	defer session.Close()
-
 	var result access_token.AccessToken
-	if err := session.Query(queryGetAccessToken, id).Scan(
+	if err := cassandra.GetSession().Query(queryGetAccessToken, id).Scan(
 		&result.AccessToken, &result.UserId, &result.ClientId, &result.Expires); err != nil {
 		if err == gocql.ErrNotFound {
 			return nil, errors.NewNotFoundError("no access token found with given id")
