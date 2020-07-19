@@ -35,3 +35,4 @@ The primary key is used to distribute the writing along the entire cluster.
 
 https://github.com/gocql/gocql
 
+This project currently use https://github.com/mercadolibre/golang-restclient
