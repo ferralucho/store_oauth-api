@@ -1,10 +1,12 @@
 package access_token
 
 import (
+	"fmt"
 	"strings"
 	"time"
 
 	"github.com/mercadolibre/store_oauth-api/src/utils/errors"
+	"github.com/mercadolibre/store_users-api/utils/utils/crypto_utils"
 )
 
 const (
@@ -66,12 +68,17 @@ func (at *AccessTokenRequest) Validate() *errors.RestErr {
 	return nil
 }
 
-func GetNewAccessToken() AccessToken {
+func GetNewAccessToken(userId int64) AccessToken {
 	return AccessToken{
+		UserId:  userId,
 		Expires: time.Now().UTC().Add(expirationTime * time.Hour).Unix(),
 	}
 }
 
 func (at AccessToken) IsExpired() bool {
 	return time.Unix(at.Expires, 0).Before(time.Now().UTC())
+}
+
+func (at *AccessToken) Generate() {
+	at.AccessToken = crypto_utils.GetMd5(fmt.Sprintf("at-%d-%d-ran", at.UserId, at.Expires))
 }

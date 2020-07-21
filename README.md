@@ -36,3 +36,21 @@ The primary key is used to distribute the writing along the entire cluster.
 https://github.com/gocql/gocql
 
 This project currently use https://github.com/mercadolibre/golang-restclient
+
+There are different grant types: 
+1) client id and secret (client credentials) exchange those for an access token.
+
+{
+    "grant_type": "client_credentials",
+    "username": "id-123",
+    "password": "secret-123",
+}
+
+2) grant type password: 
+
+{
+    "grant_type": "password",
+    "username": "emailaddress@gmail.com",
+    "password": "123abc",
+}
+

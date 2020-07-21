@@ -2,11 +2,10 @@ package rest
 
 import (
 	"encoding/json"
-	"os/user"
 	"time"
 
 	"github.com/mercadolibre/golang-restclient/rest"
-	"github.com/mercadolibre/store_oauth-api/src/domain/users"
+	users "github.com/mercadolibre/store_oauth-api/src/domain/users"
 	"github.com/mercadolibre/store_oauth-api/src/utils/errors"
 )
 
@@ -18,7 +17,7 @@ var (
 )
 
 type RestUsersRepository interface {
-	LoginUser(string, string) (*user.User, *errors.RestErr)
+	LoginUser(string, string) (*users.User, *errors.RestErr)
 }
 
 type usersRepository struct{}
@@ -27,7 +26,7 @@ func NewRestUsersRepository() RestUsersRepository {
 	return &usersRepository{}
 }
 
-func (r *usersRepository) LoginUser(email, password string) (*user.User, *errors.RestErr) {
+func (r *usersRepository) LoginUser(email, password string) (*users.User, *errors.RestErr) {
 	userRequest := users.UserLoginRequest{
 		Email:    email,
 		Password: password,
@@ -46,7 +45,7 @@ func (r *usersRepository) LoginUser(email, password string) (*user.User, *errors
 		return nil, &restErr
 	}
 
-	var user user.User
+	var user users.User
 	err := json.Unmarshal(response.Bytes(), &user)
 	if err != nil {
 		return nil, errors.NewInternalServerError("error when trying to unmarshal users response")
