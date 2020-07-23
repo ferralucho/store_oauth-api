@@ -54,3 +54,4 @@ There are different grant types:
     "password": "123abc",
 }
 
+/users/1?access_token=AbC123
