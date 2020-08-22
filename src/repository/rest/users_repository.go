@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"github.com/mercadolibre/golang-restclient/rest"
-	users "github.com/mercadolibre/store_oauth-api/src/domain/users"
-	"github.com/mercadolibre/store_oauth-api/src/utils/errors"
+	users "github.com/ferralucho/store_oauth-api/src/domain/users"
+	"github.com/ferralucho/store_oauth-api/src/utils/errors"
 )
 
 var (

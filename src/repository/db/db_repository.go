@@ -2,9 +2,9 @@ package db
 
 import (
 	"github.com/gocql/gocql"
-	"github.com/mercadolibre/store_oauth-api/src/app/clients/cassandra"
-	"github.com/mercadolibre/store_oauth-api/src/domain/access_token"
-	"github.com/mercadolibre/store_oauth-api/src/utils/errors"
+	"github.com/ferralucho/store_oauth-api/src/app/clients/cassandra"
+	"github.com/ferralucho/store_oauth-api/src/domain/access_token"
+	"github.com/ferralucho/store_oauth-api/src/utils/errors"
 )
 
 const (

@@ -3,8 +3,8 @@ package access_token
 import (
 	"strings"
 
-	"github.com/mercadolibre/store_oauth-api/src/repository/rest"
-	"github.com/mercadolibre/store_oauth-api/src/utils/errors"
+	"github.com/ferralucho/store_oauth-api/src/repository/rest"
+	"github.com/ferralucho/store_oauth-api/src/utils/errors"
 )
 
 type Repository interface {

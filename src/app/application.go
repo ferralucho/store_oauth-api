@@ -1,10 +1,10 @@
 package app
 
 import (
+	"github.com/ferralucho/store_oauth-api/src/domain/access_token"
+	"github.com/ferralucho/store_oauth-api/src/http"
+	"github.com/ferralucho/store_oauth-api/src/repository/db"
 	"github.com/gin-gonic/gin"
-	"github.com/mercadolibre/store_oauth-api/src/domain/access_token"
-	"github.com/mercadolibre/store_oauth-api/src/http"
-	"github.com/mercadolibre/store_oauth-api/src/repository/db"
 )
 
 var (

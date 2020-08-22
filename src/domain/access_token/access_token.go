@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mercadolibre/store_oauth-api/src/utils/errors"
+	"github.com/ferralucho/store_oauth-api/src/utils/errors"
 	"github.com/mercadolibre/store_users-api/utils/utils/crypto_utils"
 )
 
