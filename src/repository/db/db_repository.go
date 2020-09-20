@@ -1,6 +1,8 @@
 package db
 
 import (
+	"errors"
+
 	"github.com/ferralucho/store_oauth-api/src/app/clients/cassandra"
 	"github.com/ferralucho/store_oauth-api/src/domain/access_token"
 	"github.com/ferralucho/store_utils-go/rest_errors"
@@ -27,7 +29,7 @@ func (r *dbRepository) GetByID(id string) (*access_token.AccessToken, rest_error
 			return nil, rest_errors.NewNotFoundError("no access token found with given id")
 		}
 
-		return nil, rest_errors.NewInternalServerError(err.Error(), err)
+		return nil, rest_errors.NewInternalServerError("error when trying to get current id", errors.New("database error"))
 	}
 	return &result, nil
 }
@@ -49,7 +51,7 @@ func (r *dbRepository) UpdateExpirationTime(at access_token.AccessToken) rest_er
 		at.Expires,
 		at.AccessToken,
 	).Exec(); err != nil {
-		return rest_errors.NewInternalServerError("error when trying to update current resource", err)
+		return rest_errors.NewInternalServerError("error when trying to update current resource", errors.New("database error"))
 	}
 	return nil
 }
